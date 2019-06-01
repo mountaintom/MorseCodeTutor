@@ -9,9 +9,12 @@ This is by no means the Alpha-Omega MorseCodeTutor, but this and maybe some extr
 
 If you're new to open source, drop me a line and I'll help out.
 
-Original Idea and Software by Dr. Jack Purdum, W8TEE
-Raster Graphics by Ken, KM4NFQ
-Polish Provided by:
+* Original Idea and Software by Dr. Jack Purdum, W8TEE
+* Raster Graphics by Ken, KM4NFQ
+* Polish Provided by:
 
-Steve, KM9G
-<Your Name Here>
+* Steve, KM9G
+* *Your Name Here
+  
+  
+![alt text](https://github.com/TemporarilyOffline/MorseCodeTutor/blob/master/Audio%20Amp%20Diagram.png "Ken's Audio Amp Diagram")
