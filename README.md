@@ -8,3 +8,10 @@ Jack said have some software for something called a "blue pill" and wire it up t
 This is by no means the Alpha-Omega MorseCodeTutor, but this and maybe some extra spares from your junk drawer will get you very close.  If you find it useful... or if you find any errors.  Please feel free to create a "pull request" with your changes.
 
 If you're new to open source, drop me a line and I'll help out.
+
+Original Idea and Software by Dr. Jack Purdum, W8TEE
+Raster Graphics by Ken, KM4NFQ
+Polish Provided by:
+
+Steve, KM9G
+<Your Name Here>
