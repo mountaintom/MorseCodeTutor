@@ -1,3 +1,4 @@
+//--
 /*
   This code is placed in Open Source according to the MIT license agreement. The entirity of this comment must be left in this file.
 
@@ -21,6 +22,7 @@ To do:
   February 3,  2019  Jack Purdum, W8TEE. Began moving code to TFT color display and implementing the menuing system
   February 2,  2019  Jack Purdum, W8TEE. Modified the Tutor talk from Doug Hendrick's QRPp article
 */
+
 #ifndef BEENHERE
 #include "MorseTutor.h"
 #endif
