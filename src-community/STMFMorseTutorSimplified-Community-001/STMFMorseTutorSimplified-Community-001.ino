@@ -1,4 +1,3 @@
-//--
 /*
   This code is placed in Open Source according to the MIT license agreement. The entirity of this comment must be left in this file.
 
@@ -21,6 +20,12 @@ To do:
   February 10, 2019  Jack Purdum, W8TEE. Began moving code to STM32F103 processor
   February 3,  2019  Jack Purdum, W8TEE. Began moving code to TFT color display and implementing the menuing system
   February 2,  2019  Jack Purdum, W8TEE. Modified the Tutor talk from Doug Hendrick's QRPp article
+
+Modifications/Enhancments:
+  ========
+  Setup TFT module specifying all pins explicitly. Added pin for TFT display reset.
+  20190620 WB6B
+  ========
 */
 
 #ifndef BEENHERE
@@ -167,8 +172,11 @@ int tutorMode = RECEIVESTATE;
 uint16 wordsPerMinute;
 
 volatile int rotationDirection;     // + is CW, - is CCW
-Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
-Adafruit_MCP4725 dac;
+
+// Note: The tft display pins are defined in MorseTutor.h
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_MOSI, TFT_CLK, TFT_RST, TFT_MISO);
+
+//Adafruit_MCP4725 dac;
 Rotary myEncoder = Rotary(ENCODER1PINA, ENCODER1PINB);            // sets the pins the rotary encoder uses.  Must be interrupt pins.
 Menuing myMenu(DISPLAYWIDTH, DISPLAYHEIGHT, GREEN, BLACK, BLUE, WHITE, 1);
 
@@ -398,7 +406,10 @@ void Splash()
   tft.print("Version: ");
   tft.print(VERSION);
   
-  tft.setCursor(145, 100);
+  tft.setCursor(88, 83);
+  tft.print(SUBVERSION);
+  
+  tft.setCursor(145, 108);
   tft.print("by");
 
   tft.setTextSize(2);       // 26 characters per line

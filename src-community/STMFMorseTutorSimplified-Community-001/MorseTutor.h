@@ -1,10 +1,10 @@
-//--
 #ifndef BEENHERE
 #define BEENHERE
 
 #define DEBUG                       // Uncomment when debugging
 
 #define VERSION   007               // Version number
+#define SUBVERSION   "Community-001" // Version number
 #define MYCALL  "W8TEE"             // Change to your call
 
 //#include <avr/pgmspace.h>
@@ -12,7 +12,7 @@
 #include <SPI.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_ILI9341.h>
-#include <Adafruit_MCP4725.h>
+//#include <Adafruit_MCP4725.h>
 //#include <Fonts/FreeSerif9pt7b.h>
 //#include <Fonts/FreeSerif12pt7b.h>
 //#include <Fonts/FreeSerif18pt7b.h>
@@ -45,9 +45,13 @@
      GND            GND
      Vcc            3.3V
 */
-// For the Adafruit shield, these are the default pins.
-#define TFT_DC            PA0
-#define TFT_CS            PA1
+// Define pins for tft display using Adafruit_ILI9341 driver.
+#define TFT_CS   PA1
+#define TFT_DC   PA0
+#define TFT_MOSI PA7
+#define TFT_CLK  PA5
+#define TFT_RST  PA3 // Define reset pin to be used if desired.
+#define TFT_MISO PA6
 
 #define SPEAKERPIN        PA2     //For sidetone
 
@@ -156,7 +160,7 @@
 
 extern Rotary r;                                  // sets the pins the rotary encoder uses.  Must be interrupt pins.
 extern Adafruit_ILI9341 tft;
-extern Adafruit_MCP4725 dac;
+//extern Adafruit_MCP4725 dac;
 extern Rotary myEncoder;
 extern Menuing myMenu;
 
