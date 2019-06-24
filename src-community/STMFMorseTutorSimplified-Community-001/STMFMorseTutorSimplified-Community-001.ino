@@ -174,7 +174,12 @@ uint16 wordsPerMinute;
 volatile int rotationDirection;     // + is CW, - is CCW
 
 // Note: The tft display pins are defined in MorseTutor.h
-Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_MOSI, TFT_CLK, TFT_RST, TFT_MISO);
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
+
+// As an alternative you may use this TFT setup that lets you specify all the pins. However the TFT library will
+// switch to bit banging the SPI data and the display will be slower.
+//Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_MOSI, TFT_CLK, TFT_RST, TFT_MISO);
+
 
 //Adafruit_MCP4725 dac;
 Rotary myEncoder = Rotary(ENCODER1PINA, ENCODER1PINB);            // sets the pins the rotary encoder uses.  Must be interrupt pins.
@@ -420,7 +425,7 @@ void Splash()
   tft.setCursor(0, row + 150);
   tft.print("      Al Peter, AC8GY");
 
-  MyDelay(500);
+  MyDelay(1500);
 }
 
 //=================================================================
@@ -431,7 +436,6 @@ void setup()
   int items;
 
   Serial.begin(115200);
-  delay(500);
 
   pinMode(ENCODER1PINA,     INPUT_PULLUP);
   pinMode(ENCODER1PINB,     INPUT_PULLUP);
@@ -446,6 +450,17 @@ void setup()
   digitalWrite(DITPADDLE,       HIGH);
 
   pinMode(SPEAKERPIN, OUTPUT);
+
+
+  // Do a tft display reset outside of Adafruit library.
+  // This allows the display reset to be connected to a
+  // 10k resistor or the hardware reset (pin PA3) without
+  // changing the TFT setup (constructor) type.
+  pinMode(TFT_RST, INPUT_PULLUP);
+  digitalWrite(TFT_RST, LOW);
+  delay(20);
+  digitalWrite(TFT_RST, HIGH);
+  delay(500);
 
   tft.begin();
   tft.setRotation(1);
